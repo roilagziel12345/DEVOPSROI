@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tictactoe-frontend
+  labels:
+    app: tictactoe
+    tier: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tictactoe
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        app: tictactoe
+        tier: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: tictactoe-frontend:latest
+          ports:
+            - containerPort: 80
+          imagePullPolicy: Never

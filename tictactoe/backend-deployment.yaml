@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tictactoe-backend
+  labels:
+    app: tictactoe
+    tier: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tictactoe
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: tictactoe
+        tier: backend
+    spec:
+      containers:
+        - name: backend
+          image: tictactoe-backend:latest
+          ports:
+            - containerPort: 5000
+          imagePullPolicy: Never
